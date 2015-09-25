@@ -41,7 +41,7 @@ type AdBreak struct {
 	// common when a linear ad is followed by a nonlinear ad. Also a VMAP response
 	// can contain a mix of offset value types; however, when a mix is values provided,
 	// any position value can be ignored.
-	TimeOffset string `xml:"timeOffset,attr"`
+	TimeOffset Offset `xml:"timeOffset,attr"`
 	// Identifies whether the ad break allows "linear", "nonlinear" or "display" ads.
 	// Display break types map to VAST companion ads. If more than one type is allowed,
 	// they can be entered using a comma between each (no spaces). For example
@@ -62,9 +62,10 @@ type AdBreak struct {
 	// should take precedence while the overlapping ad break is ignored. Since an
 	// <adSource> can be a VAST Wrapper to an ad server or ad network, the ads played
 	// in a repeated ad break may not be the same at each point.
-	RepeatAfter Duration `xml:"repeatAfter,attr,omitempty"`
+	RepeatAfter vast.Duration `xml:"repeatAfter,attr,omitempty"`
 	// Provides the player with either an inline ad response or a reference to an ad response.
-	AdSource       *AdSource  `xml:",omitempty"`
+	AdSource *AdSource `xml:",omitempty"`
+	// Defines event tracking URLs
 	TrackingEvents []Tracking `xml:"TrackingEvents>Tracking,omitempty"`
 	// Can be used to express additional information not supported in the VMAP specification.
 	Extensions *Extensions `xml:",omitempty"`
