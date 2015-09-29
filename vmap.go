@@ -14,6 +14,8 @@ type VMAP struct {
 	Version string `xml:"version,attr"`
 	// Zero or more <AdBreak> child elements
 	AdBreaks []AdBreak `xml:"AdBreak"`
+	// Can be used to express additional information not supported in the VMAP specification.
+	Extensions *Extensions `xml:",omitempty"`
 }
 
 // AdBreak represents a single ad break, but may allow for multiple ads.
@@ -111,10 +113,13 @@ type Tracking struct {
 
 // Extensions defines extensions
 type Extensions struct {
-	Extensions []Extension `xml:",omitempty"`
+	Extensions []Extension `xml:"Extension,omitempty"`
 }
 
 // Extension represent aribtrary XML provided by the platform to extend the VAST response
 type Extension struct {
+	// The type of the extension. The type must be globaly unique. A URI is recommended.
+	Type string `xml:"type,attr,omitempty"`
+	// The XML content of the extension. Extension XML must use it's own namespace.
 	Data []byte `xml:",innerxml"`
 }
