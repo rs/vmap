@@ -1,15 +1,10 @@
 // Package vmap implement IAB's VMAP 1.0.1 (http://www.iab.net/guidelines/508676/digitalvideo/vsuite/vmap)
 package vmap
 
-import (
-	"encoding/xml"
-
-	"github.com/rs/vast"
-)
+import "github.com/rs/vast"
 
 // VMAP is the root <VMAP> tag
 type VMAP struct {
-	XMLName xml.Name `xml:"http://www.iab.net/videosuite/vmap VMAP"`
 	// The version of the VMAP spec (should be 1.0)
 	Version string `xml:"version,attr"`
 	// Zero or more <AdBreak> child elements
