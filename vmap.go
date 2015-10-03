@@ -80,7 +80,7 @@ type AdSource struct {
 	// not specified, the video player may choose whether it will honor redirects.
 	FollowRedirects *bool `xml:"followRedirects,attr,omitempty"`
 	// Contains an embedded VAST response.
-	VASTAdData   *vast.VAST `xml:",omitempty"`
+	VASTAdData   *vast.VAST `xml:"VASTAdData>VAST,omitempty"`
 	AdTagURI     *AdTagURI
 	CustomAdData *CustomAdData
 }
