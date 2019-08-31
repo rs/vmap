@@ -89,7 +89,7 @@ type AdSource struct {
 type AdTagURI struct {
 	// Can be vast, vast1, vast2, vast3 or any string identifying a proprietary template.
 	TemplateType string `xml:"templateType,attr,omitempty"`
-	URI          string `xml:",chardata"`
+	URI          string `xml:",cdata"`
 }
 
 // CustomAdData is an arbitrary string data that represents a non-VAST ad response
